@@ -1,0 +1,17 @@
+
+-- оновити в user імейл за умови, що він не має зв'язку з косметикою
+
+
+update user 
+set user_email = 'new@gmail.com'
+where user.user_email  in 
+(
+SELECT
+    user.user_email
+FROM
+    user
+    JOIN users_features ON user.user_email = users_features.user_email_fk
+    JOIN feature ON users_features.features_name_fk = feature.feature_name
+    JOIN makeup_features ON makeups_features.feature_name_fk = feature.feature_name
+    right JOIN makeup ON makeups_features.makeup_id_fk = makeup.makeup_id
+where makeups_features.makeup_id_fk is null) ;
