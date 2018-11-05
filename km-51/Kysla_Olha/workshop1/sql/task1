@@ -1,0 +1,3 @@
+--додати в USER_FEATURES дані при інуючому користувачу та особливості
+
+Insert into  Users_features (feature_name_fk, user_email_fk, user_attribute) values ('eyes','olha@gmail.com','black');
