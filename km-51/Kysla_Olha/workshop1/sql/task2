@@ -1,0 +1,15 @@
+
+--видалити makeup_feature якщо вона зв'язана з user_features
+
+
+DELETE FROM makeup_features
+WHERE
+users_features.features_name_fk in 
+    (
+        SELECT
+            users_features.features_name_fk
+        FROM
+            users_features
+            JOIN feature ON users_features.feature_name_fk = feature.feature_name
+            JOIN makeups_features ON makeups_features.feature_name_fk = feature.feature_name
+    );
