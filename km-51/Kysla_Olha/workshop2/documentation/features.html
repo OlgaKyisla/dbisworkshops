@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+</head>
+<body>
+ <h1>second table</h1>
+
+
+    <form action = "/api" method = "POST" id="form_second_table">
+         <p>feature_name <input type = "text" name = "feature_name" value="{{features_result.get('feature_name')}}"/></p>
+     </form>
+
+    <button type="submit" form="form_second_table" name="action" value="update_features">Submit</button>
+
+
+</body>
+</html>
