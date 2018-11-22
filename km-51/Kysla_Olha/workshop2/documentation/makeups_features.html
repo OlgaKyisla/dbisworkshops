@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>first_table</title>
+</head>
+<body>
+    <form action = "/api" method = "POST" id="form_first_table">
+         <p>makeup_id_fk <input type = "text" name = "makeup_id_fk" value="{{makeups_features_result.get('makeup_id_fk')}}"/></p>
+         <p>feature_name_fk <input type = "text" name = "feature_name_fk" value="{{makeups_features_result.get('feature_name_fk')}}" /></p>
+         <p>makeup_attribute <input type = "text" name = "makeup_attribute" value="{{makeups_features_result.get('makeup_attribute')}}" /></p>
+     </form>
+
+    <button type="submit" form="form_first_table" name="action" value="update_makeups_features">Submit</button>
+</body>
+</html>
