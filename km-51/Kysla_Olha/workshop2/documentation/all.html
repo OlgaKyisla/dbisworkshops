@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all</title>
+</head>
+<body>
+   <h1> All tables</h1>
+
+        <table border = 1 >
+             <caption> {{table_name[0]}}  </caption>
+            {% for key, value in first_table_result.items() %}
+            <tr>
+                <th> {{key}} </th>
+                <td> {{value}} </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <table border = 1>
+            <caption> {{table_name[1]}}  </caption>
+            {% for key, value in second_table_result.items() %}
+            <tr>
+                <th> {{key}} </th>
+                <td> {{value}} </td>
+            {% endfor %}
+            </tr>
+        </table>
+
+</body>
+</html>
