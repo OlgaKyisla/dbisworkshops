@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='home.css') }}">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <div class = "body_style" ,text-align = "center">
+        <ul class="hr" >
+            {% if admin==True %}
+                <li> <a href="/admin"> Admin page </a> </li>
+           {% endif %}
+            <li>
+                <form  style= "padding-left: 75%" action = "/logout" method = "GET" >
+                    <input type="submit" value="Logout" style = "border-radius:5px">
+                </form>
+        </ul>
+
+
+    </div>
+
+
+    <div class="content" style="display:{{search_display}}">
+        <h1> Please choose the following options to search </h1>
+        <form id = "options_for_search_table" method="POST" action="/api">
+            <table >
+                <tr>
+                    {% for value in features %}
+                        <td><p style="display: inline">Choose {{value}} :</p></td>
+                        <td>
+                            <select name="{{value}}" >
+                                {% for option in features_options[value] %}
+                                <option>{{option}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                </tr>
+                    {% endfor %}
+            </table>
+            <br>
+
+        </form>
+        <button type="submit" form="options_for_search_table" name="action" value="update" >Submit</button>
+
+    </div>
+
+
+    <div class="content" style="display:{{makeup_display}}" >
+        <h1> Makeups </h1>
+            <table id = "makeup_table">
+
+                <tr>
+                        <td><p> Makeup name</p></td>
+                        <td><p> Makeup price</p></td>
+                        <td><p> Makeup quantity</p></td>
+                        <td><p> Makeup description</p></td>
+                </tr>
+                {% for values in table %}
+                <tr>
+
+                    {% for value in values %}
+                        <td><p> {{value}} </p></td>
+                    {% endfor %}
+
+                </tr>
+                {% endfor %}
+            </table>
+
+    </div>
+       {% if successful %}
+        <script>
+            swal({
+                 title: "",
+                 text: "Authentication successful!",
+                 icon: "success",
+            });
+         </script>
+    {% endif %}
+
+
+
+
+</body>
+</html>

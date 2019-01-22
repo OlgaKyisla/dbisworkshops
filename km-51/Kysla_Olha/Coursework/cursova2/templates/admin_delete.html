@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='home.css') }}">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <div class = "body_style" ,text-align = "center">
+        <ul class="hr" >
+            <li>
+                <form  style= "padding-left: 75%" action = "/admin" method = "GET" >
+                    <input type="submit" value="Go back" style = "border-radius:5px">
+                </form>
+        </ul>
+    </div>
+
+    <div class="content" style="display:{{makeup_display}}" >
+        <h1> Makeups </h1>
+            <table id = "makeup_table">
+
+                <tr>
+                        <td><p> Makeup id</p></td>
+                        <td><p> Makeup name</p></td>
+                        <td><p> Makeup price</p></td>
+                        <td><p> Makeup quantity</p></td>
+                        <td><p> Makeup description</p></td>
+                </tr>
+                {% for values in table %}
+                <tr>
+
+                    {% for value in values %}
+                        <td><p> {{value}} </p></td>
+                    {% endfor %}
+
+                </tr>
+                {% endfor %}
+            </table>
+
+
+        <form id = "options_for_makeup_id" method="POST" action="/delete_action">
+                <h3> Select makeups id to delete </h3>
+
+                            <select name = "id">
+                                 {% for value in makeup_id %}
+                                    <option>{{value}}</option>
+                                 {% endfor %}
+                            </select>
+        </form>
+        <button type="submit" form="options_for_makeup_id" name="makeup" value="delete_makeup" >DELETE</button>
+
+
+    </div>
+
+
+
+
+</body>
+</html>

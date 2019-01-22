@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='home.css') }}">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+
+<div class = "body_style" ,text-align = "center">
+			 <ul class="hr" >
+                 <li>
+                    <form  style= "padding-left: 80%" action = "/login" method = "GET" >
+                        <input type="submit" value="Go back" style = "border-radius:5px">
+                    </form>
+                 </li>
+			 </ul>
+</div>
+<br/>
+<div class="content">
+                <h1> Please perform registration </h1>
+                     <form  action = "/reg" method = POST>
+
+                         <fieldset>
+                            {{ form.hidden_tag() }}<br/>
+
+                             <p>{{ form.name.label }}</p> <p>{{ form.name }}</p>
+
+                                 {% for message in form.name.errors %}
+                                    <script>
+                                        swal({
+                                            title: "{{message}}",
+                                            text: "You clicked the button!",
+                                            icon: "error",
+                                        });
+                                    </script>
+                                 {% endfor %}
+
+                             <p>{{ form.password.label }}</p> <p>{{ form.password }}</p>
+
+                                 {% for message in form.password.errors %}
+                                    <script>
+                                        swal({
+                                            title: "{{message}}",
+                                            text: "You clicked the button!",
+                                            icon: "error",
+                                        });
+                                    </script>
+                                 {% endfor %}
+
+                             <p>{{ form.email.label }} </p> <p>{{ form.email }}</p>
+
+                                {% for message in form.email.errors %}
+                                   <script>
+                                        swal({
+                                            title: "{{message}}",
+                                            text: "You clicked the button!",
+                                            icon: "error",
+                                        });
+                                    </script>
+                                 {% endfor %}
+
+                             <p>{{ form.submit }}</p>
+
+
+                             {% if error %}
+                                <script>
+                                        swal({
+                                            title: "{{error}}",
+                                            text: "You clicked the button!",
+                                            icon: "error",
+                                        });
+                                </script>
+                             {% endif%}
+
+                         </fieldset>
+                      </form>
+
+</div>
+
+</body>
+</html>

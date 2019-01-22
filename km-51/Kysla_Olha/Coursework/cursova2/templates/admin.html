@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='home.css') }}">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <div class = "body_style" ,text-align = "center">
+        <ul class="hr" >
+            <li>
+                <form  style= "padding-left: 80%" action = "/search" method = "GET" >
+                        <input type="submit" value="Go back" style = "border-radius:5px">
+                </form>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h2>Choose action:</h2>
+        <form action = "/add" method = "POST" id="add">
+            <p> If you want to add makeup to DB press ADD Makeup button </p>
+        </form>
+        <button type="submit" form="add" name="action" value="add">ADD Makeup</button>
+
+        <form action = "/delete" method = "POST" id="delete">
+            <p> If you want to delete makeup from DB press Delete Makeup button </p>
+        </form>
+        <button type="submit" form="delete" name="action" value="delete">Delete Makeup</button>
+
+        <form action = "/edit" method = "POST" id="edit">
+            <p> If you want to edit makeup in the DB press Edit Makeup button </p>
+        </form>
+        <button type="submit" form="edit" name="action" value="edit">Edit Makeup</button>
+
+
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='home.css') }}">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+<body>
+    <div class = "body_style" ,text-align = "center">
+        <ul class="hr" >
+            <li>
+                <form  style= "padding-left: 65%" action = "/reg" method = "GET" >
+                    <input type="submit" value="Registration" style = "border-radius:5px">
+                </form>
+            </li>
+            <li>
+                <form class = "form_style" style= " display:{{log_display}}" action = "/login" method = "POST">
+                    {{ form.hidden_tag() }}
+                    {{ form.password(placeholder=" Password", style="border-radius:5px") }}
+                        {% for message in form.password.errors %}
+                            <script>
+                                swal({
+                                    title: "{{message}}",
+                                    text: "You clicked the button!",
+                                    icon: "error",
+                                });
+                            </script>
+                        {% endfor %}
+
+                    {{ form.email(placeholder=" Email", style="border-radius:5px") }}
+                        {% for message in form.email.errors %}
+                            <script>
+                                swal({
+                                    title: "{{message}}",
+                                    text: "You clicked the button!",
+                                    icon: "error",
+                                });
+                            </script>
+                        {% endfor %}
+
+                    {{ form.submit(style="border-radius:5px") }}
+                </form>
+            </li>
+        </ul>
+
+        {% if error %}
+            <script>
+                swal({
+                title: "{{error}}",
+                text: "You clicked the button!",
+                icon: "error",
+                });
+             </script>
+        {% endif%}
+
+        {% if blocked %}
+            <script>
+                swal({
+                title: "You are blocked user! ",
+                text: "You clicked the button!",
+                icon: "error",
+                });
+             </script>
+        {% endif%}
+    </div>
+
+    <div id = "demotext" class="phrase">
+        <p> Find your best MAKEUP ever !!!</p>
+    </div>
+</body>
+</html>
